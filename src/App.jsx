@@ -1,10 +1,19 @@
-import TodoWrapper from "./components/TodoWrapper"
+import { useState } from "react"
 
 function App() {
-
-  return (
+  const [data,setData] = useState({
+    name: "John Doe",
+    status : "active"
+  })
+  const changeDataName = (e) => {
+    setData({...data,name: e.target.value})
+  }
+  return(
     <>
-      <TodoWrapper />
+      <p>{data.name}</p>
+      <p>{data.status}</p>
+      <input type="text" value={data.name} onChange={changeDataName} />
+      <input type="text" value={data.status} onChange={changeDataName} />
     </>
   )
 }
